@@ -10,7 +10,9 @@ Target audience: Scientists who use CleaveLand4 to analyze degradomes from multi
 Software Dependencies: Python 3
 
 To run: Enter this sample command in a terminal:
+
 $ python degNostic.py InfSample_dd.txt 15 UninfSample_dd.txt 2
+
 This will output a .txt file with all Category 0 sites with > 15 reads that are exclusive to the Infected degradome. There should be 4 of them.
 
 Disclaimer: This script will not identify new "genuine" sRNA/target pairs. It will identify one potentially interesting class of anomaly in PARE data: a clear transcript slicing site with no corresponding sRNA. 
