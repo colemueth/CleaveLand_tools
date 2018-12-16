@@ -1,13 +1,26 @@
 # CleaveLand_tools:
-Add-on tools for CleaveLand4
+Add-ons for CleaveLand4
 
-Background: I do Parallel Analysis of RNA Ends (PARE) experiments to study the interaction between plant pathogens and their hosts at the RNA level. My data analysis involves CleaveLand4 software from the Axtell Lab at Penn State University. (https://github.com/MikeAxtell/CleaveLand4/releases). I'm not a member of this lab; I just use the software.
+Background: I do Parallel Analysis of RNA Ends (PARE) experiments to study the interaction between plant pathogens and their hosts at the RNA level. My analysis pipeline uses CleaveLand4 software from the Axtell Lab at Penn State University. (https://github.com/MikeAxtell/CleaveLand4/releases). I'm not a member of this lab; I just use the software.
+In analyzing my data, I needed some functionalities that CleaveLand4 doesn't currently offer. I've written two add-on tools in Python 3 that others may find useful.
+
+Target audience: Scientists who use CleaveLand4 to analyze degradome data.
+
+Dependencies: Python 3
+
+I. degThresh.py
+One issue with CleaveLand4 is that it can output thousands of marginal T-plots even on stringent settings. Most of these result from an sRNA mapping to a site with a few random-looking reads here and there. Viewing them all to find a few good ones is inefficient. degThresh.py inputs a degradome density file, checks the reads distribution of each entry, and creates a new degradome density file with entries above a certain threshold of reads. Then the user can run CleaveLand4 in Mode 4 using the new degradome density file and a GSTAr alignment file. CleaveLand4 will now output only the results that are more likely to be interesting to the user.
+
+To run from a terminal:
+
+
+
 I have PARE libraries from both infected plants and uninfected controls. In analyzing the data, I noticed that many fungal transcripts have high “Category 0” peaks that appears to be an sRNA-directed cut site, yet no sRNA from my sRNA-seq library is predicted to bind there. These are unique to infected libraries and present in multiple independent biological reps.
 I wrote a script called degNostic.py that pulls out these differences. It searches through two CleaveLand-generated degradome density files for Category 0 peaks with a user-defined reads cutoff. It compares the peak in one file with the data for the same transcript in a second file. For all transcripts with peaks that are unique to one file, it outputs the transcript name and the position of the cut site.
 
-Target audience: Scientists who use CleaveLand4 to analyze degradomes from multiple treatments.
 
-Software Dependencies: Python 3
+
+
 
 To run: Enter this sample command in a terminal:
 
